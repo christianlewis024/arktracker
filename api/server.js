@@ -3,6 +3,10 @@ const helmet = require("helmet");
 const cors = require("cors");
 const session = require("express-session");
 
+// const itemsRouter = require("../items/items-router.js");
+// const dinosRouter = require("../dinos/dinos-router.js");
+const authRouter = require("../auth/authRouter");
+
 const server = express();
 
 const sessionConfig = {
@@ -23,6 +27,10 @@ server.use(session(sessionConfig)); // turn on sessions for the API
 server.use(helmet());
 server.use(express.json());
 server.use(cors());
+
+// server.use("/api/items", itemsRouter);
+// server.use("/api/dinos", dinosRouter);
+server.use("/api/auth", authRouter);
 
 server.get("/", (req, res) => {
   res.json({ api: "Server is up and running. This is the root url." });
