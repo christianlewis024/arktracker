@@ -58,3 +58,5 @@ https://clhowto.herokuapp.com/
 | video        | string  | no       | no     | can link a youtube for their how-to(max 255 char) |
 | instructions | string  | no       | no     | instructions to do the how-to(255 char)           |
 | user_id      | string  | yes      | no     | user's id that created the post                   |
+
+need to edit tables still
