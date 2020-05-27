@@ -3,8 +3,8 @@ const helmet = require("helmet");
 const cors = require("cors");
 const session = require("express-session");
 
-// const itemsRouter = require("../items/items-router.js");
-// const dinosRouter = require("../dinos/dinos-router.js");
+const itemsRouter = require("../items/itemsRouter.js");
+const dinosRouter = require("../dinos/dinosRouter.js");
 const authRouter = require("../auth/authRouter");
 
 const server = express();
@@ -28,8 +28,8 @@ server.use(helmet());
 server.use(express.json());
 server.use(cors());
 
-// server.use("/api/items", itemsRouter);
-// server.use("/api/dinos", dinosRouter);
+server.use("/api/items", itemsRouter);
+server.use("/api/dinos", dinosRouter);
 server.use("/api/auth", authRouter);
 
 server.get("/", (req, res) => {
