@@ -49,6 +49,7 @@ router.post("/login", (req, res) => {
           res.status(200).json({
             message: "You have successfully logged in to Ark Tracker",
             token,
+            user_id: `${user.id}`,
           });
         } else {
           res
