@@ -12,7 +12,7 @@ router.post("/register", (req, res) => {
     const rounds = process.env.BCRYPT_ROUNDS || 16;
 
     // hash the password
-    const hash = bcrypt.hash(credentials.password, rounds);
+    const hash = bcrypt.hashSync(credentials.password, rounds);
 
     credentials.password = hash;
 
@@ -40,7 +40,7 @@ router.post("/login", (req, res) => {
     Users.findBy({ username: username })
       .then(([user]) => {
         // compare the password the hash stored in the database
-        if (user && bcryptjs.compare(password, user.password)) {
+        if (user && bcrypt.compare(password, user.password)) {
           // we can save information about the client inside the session (req.session)
           req.session.loggedIn = true;
           req.session.user = user;
