@@ -1,7 +1,7 @@
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = require("express").Router();
-
+const bcrypt = require("bcrypt");
 const Users = require("../users/usersModel.js");
 const { isValid } = require("../users/users-service.js");
 
@@ -12,7 +12,7 @@ router.post("/register", (req, res) => {
     const rounds = process.env.BCRYPT_ROUNDS || 16;
 
     // hash the password
-    const hash = bcryptjs.hash(credentials.password, rounds);
+    const hash = bcrypt.hash(credentials.password, rounds);
 
     credentials.password = hash;
 
